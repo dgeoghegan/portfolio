@@ -29,9 +29,9 @@ This demo implements a minimal GitOps-based release system for a versioned appli
 
 ### Repositories and roles
 
-- **versioned-app** — minimal application that reports its running version  
-- **gitops-release-controller** — GitOps configuration, environment promotion logic, and primary reviewer artifacts  
-- **gitops-infra** — infrastructure used to host and exercise the demo (not required to understand control flow)
+- **[`versioned-app`](https://github.com/dgeoghegan/versioned-app)** — minimal application that reports its running version  
+- **[`gitops-release-controller`](https://github.com/dgeoghegan/gitops-release-controller)** — GitOps configuration, environment promotion logic, and primary reviewer artifacts  
+- **[`gitops-infra`](https://github.com/dgeoghegan/gitops-infra)** — infrastructure used to host and exercise the demo (not required to understand control flow)
 
 The system is intentionally constrained so change behavior is easy to observe. The **container image tag is the sole mechanism** for changing application runtime state per environment. Deploys and rollbacks are symmetric operations: both are performed by Git PRs that modify versioned configuration, not by imperative cluster actions.
 
@@ -39,7 +39,7 @@ This constraint reduces flexibility and iteration speed. Every change requires a
 
 ### Fastest way to verify (read-only)
 
-- Open **`gitops-release-controller/REVIEWER_WALKTHROUGH.md`**
+- Open **[`gitops-release-controller/REVIEWER_WALKTHROUGH.md`](https://github.com/dgeoghegan/gitops-release-controller/blob/main/REVIEWER_WALKTHROUGH.md)**
 - Within ~60 seconds you will see:
   - a merged PR that changes only `image.tag` in an environment-scoped values file
   - an Argo CD Application manifest pointing at that path
@@ -48,7 +48,7 @@ This constraint reduces flexibility and iteration speed. Every change requires a
 
 ### Optional execution (not required for review)
 
-- Execution is optional and documented in **`SETUP_GUIDE.md`**
+- Execution is optional and documented in **[`SETUP_GUIDE.md`](https://github.com/dgeoghegan/gitops-release-controller/blob/main/SETUP_GUIDE.md)**
 - Credentials are required only if you choose to run the demo end-to-end
 - Running the demo shows live reconciliation behavior, timing, and the running application version changing after a PR merge
 
@@ -68,6 +68,9 @@ This demo implements a Kubernetes cluster on AWS with explicit handling of contr
 The system is constructed so its behavior can be understood by reading the infrastructure code. Dependencies are expressed declaratively, configuration is generated rather than hand-managed, and availability is achieved through explicit placement and wiring rather than implicit defaults. For example, control-plane wiring and certificate handling are modeled directly instead of being assumed by an opinionated platform layer.
 
 The demo avoids higher-level Kubernetes abstractions beyond the managed control plane itself. This forces ordering, dependency, and lifecycle decisions to be made explicitly and makes the consequences of those decisions inspectable.
+
+**Repository:**  
+- **[`kubernetes-cluster-automated`](https://github.com/dgeoghegan/kubernetes-cluster-automated)**
 
 ### What “high availability” means here
 
@@ -106,10 +109,10 @@ Excluding them keeps the systems small enough to reason about end to end and kee
 ## Where to Go Next
 
 - **GitOps Release Management**  
-  Start with **`gitops-release-controller/REVIEWER_WALKTHROUGH.md`**. It is the fastest path to evaluating the core claims.
+  Start with **[`gitops-release-controller/REVIEWER_WALKTHROUGH.md`](https://github.com/dgeoghegan/gitops-release-controller/blob/main/REVIEWER_WALKTHROUGH.md)**. It is the fastest path to evaluating the core claims.
 
 - **Kubernetes / Terraform Control-Plane**  
-  Start with the Terraform root modules to see how control-plane configuration, networking, and availability are modeled explicitly.
+  Start with **[`kubernetes-cluster-automated`](https://github.com/dgeoghegan/kubernetes-cluster-automated)** and inspect the Terraform root modules to see how control-plane configuration, networking, and availability are modeled explicitly.
 
 Each repository includes its own README and supporting documentation. Execution is optional; the demos are designed so their core claims can be assessed through inspection alone.
 
