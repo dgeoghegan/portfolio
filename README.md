@@ -65,9 +65,11 @@ This constraint reduces flexibility and iteration speed. Every change requires a
 
 This demo implements a Kubernetes cluster on AWS with explicit handling of control-plane configuration, certificates, networking, and availability across multiple availability zones. The intent is to make the mechanics of the control plane visible rather than collapsed behind higher-level abstractions.
 
+It focuses on control-plane ownership, lifecycle, and rebuild semantics rather than application-level Kubernetes usage or workload management.
+
 The system is constructed so its behavior can be understood by reading the infrastructure code. Dependencies are expressed declaratively, configuration is generated rather than hand-managed, and availability is achieved through explicit placement and wiring rather than implicit defaults. For example, control-plane wiring and certificate handling are modeled directly instead of being assumed by an opinionated platform layer.
 
-The demo avoids higher-level Kubernetes abstractions beyond the managed control plane itself. This forces ordering, dependency, and lifecycle decisions to be made explicitly and makes the consequences of those decisions inspectable.
+The demo avoids managed Kubernetes control planes and opinionated platform layers, forcing control-plane ordering, dependency, and lifecycle decisions to be made explicit. All supported cluster lifecycle actions are mediated through a single entrypoint script; direct ad-hoc manipulation of infrastructure outside the documented workflow is intentionally unsupported.
 
 **Repository:**  
 - **[`kubernetes-cluster-automated`](https://github.com/dgeoghegan/kubernetes-cluster-automated)**
@@ -76,11 +78,13 @@ The demo avoids higher-level Kubernetes abstractions beyond the managed control 
 
 A single-region, multi-availability-zone cluster with redundant worker capacity and control-plane components distributed across zones. This is not a multi-region or disaster-recovery demo.
 
-### Fastest way to verify
+### Fastest way to verify (read-only)
 
-- Inspect the Terraform root modules defining control-plane, networking, and AZ layout
-- Review generated configuration and certificate handling
-- Examine apply and destroy flows demonstrating clean rebuild from a new machine once credentials are supplied
+- Open **[`kubernetes-cluster-automated/REVIEWER_WALKTHROUGH.md`](https://github.com/dgeoghegan/kubernetes-cluster-automated/REVIEWER_WALKTHROUGH.md)**
+- Within a few minutes you will see:
+  - how the control plane is provisioned on EC2
+  - how lifecycle ordering is enforced
+  - how rebuilds are supported without workstation state
 
 ---
 
