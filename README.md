@@ -46,7 +46,7 @@ This constraint reduces flexibility and iteration speed. Every change requires a
 - That single observation validates the core claim:
   - **deploys and rollbacks are controlled solely by Git PRs that modify versioned configuration**
 
-### Optional execution (not required for review)
+### Optional execution
 
 - Execution is optional and documented in **[`SETUP_GUIDE.md`](https://github.com/dgeoghegan/gitops-release-controller/blob/main/SETUP_GUIDE.md)**
 - Credentials are required only if you choose to run the demo end-to-end
@@ -85,6 +85,16 @@ A single-region, multi-availability-zone cluster with redundant worker capacity 
   - how the control plane is provisioned on EC2
   - how lifecycle ordering is enforced
   - how rebuilds are supported without workstation state
+
+### Optional execution 
+
+Execution is optional and documented in [`SETUP_GUIDE.md`](https://github.com/dgeoghegan/kubernetes-cluster-automated/blob/master/SETUP_GUIDE.md). Running the demo provisions AWS infrastructure and incurs cloud costs while the environment exists.
+
+Execution requires:
+- An AWS account and credentials with permissions to create and destroy VPC networking, EC2 instances, IAM resources, and supporting services.
+- Local installation of `terraform` (version ≥ 1.5.0), a Bash shell, `git`, and an SSH client.
+
+All lifecycle actions are performed through a single entrypoint script. A full bring-up provisions a multi–availability zone VPC, EC2-based Kubernetes control-plane and worker nodes, and a dedicated Docker host used to run containerized Ansible and kubectl tooling. Teardown cleanly destroys all provisioned resources when finished.
 
 ---
 
