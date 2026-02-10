@@ -63,13 +63,15 @@ This constraint reduces flexibility and iteration speed. Every change requires a
 ## Kubernetes / Terraform Control-Plane  
 *(single repository)*
 
-This demo implements a Kubernetes cluster on AWS with explicit handling of control-plane configuration, certificates, networking, and availability across multiple availability zones. The intent is to make the mechanics of the control plane visible rather than collapsed behind higher-level abstractions.
+This demo implements a Kubernetes cluster on AWS **using only AWS primitives (EC2, VPC, IAM, and networking)** rather than a managed Kubernetes service such as EKS. Kubernetes control-plane components run directly on EC2 instances provisioned and wired by Terraform, with explicit handling of control-plane configuration, certificates, networking, and availability across multiple availability zones.
+
+The intent is to make the mechanics of the Kubernetes control plane visible rather than collapsed behind a managed service or opinionated platform abstraction.
 
 It focuses on control-plane ownership, lifecycle, and rebuild semantics rather than application-level Kubernetes usage or workload management.
 
-The system is constructed so its behavior can be understood by reading the infrastructure code. Dependencies are expressed declaratively, configuration is generated rather than hand-managed, and availability is achieved through explicit placement and wiring rather than implicit defaults. For example, control-plane wiring and certificate handling are modeled directly instead of being assumed by an opinionated platform layer.
+The system is constructed so its behavior can be understood by reading the infrastructure code, **without relying on assumptions or defaults provided by managed Kubernetes platforms**. Dependencies are expressed declaratively, configuration is generated rather than hand-managed, and availability is achieved through explicit placement and wiring rather than implicit defaults. For example, control-plane wiring and certificate handling are modeled directly instead of being assumed by a vendor-managed control plane.
 
-The demo avoids managed Kubernetes control planes and opinionated platform layers, forcing control-plane ordering, dependency, and lifecycle decisions to be made explicit. All supported cluster lifecycle actions are mediated through a single entrypoint script; direct ad-hoc manipulation of infrastructure outside the documented workflow is intentionally unsupported.
+The demo deliberately avoids managed Kubernetes control planes (for example, EKS) and opinionated platform layers, forcing control-plane ordering, dependency, and lifecycle decisions to be made explicit rather than inherited. All supported cluster lifecycle actions are mediated through a single entrypoint script; direct ad-hoc manipulation of infrastructure outside the documented workflow is intentionally unsupported.
 
 **Repository:**  
 - **[`kubernetes-cluster-automated`](https://github.com/dgeoghegan/kubernetes-cluster-automated)**
