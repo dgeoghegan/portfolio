@@ -82,7 +82,7 @@ A single-region, multi-availability-zone cluster with redundant worker capacity 
 
 ### Fastest way to verify (read-only)
 
-- Open **[`kubernetes-cluster-automated/REVIEWER_WALKTHROUGH.md`](https://github.com/dgeoghegan/kubernetes-cluster-automated/REVIEWER_WALKTHROUGH.md)**
+- Open **[`kubernetes-cluster-automated/REVIEWER_WALKTHROUGH.md`](https://github.com/dgeoghegan/kubernetes-cluster-automated/blob/master/REVIEWER_WALKTHROUGH.md)**
 - Within a few minutes you will see:
   - how the control plane is provisioned on EC2
   - how lifecycle ordering is enforced
