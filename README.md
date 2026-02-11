@@ -74,7 +74,7 @@ The system is constructed so its behavior can be understood by reading the infra
 The demo deliberately avoids managed Kubernetes control planes (for example, EKS) and opinionated platform layers, forcing control-plane ordering, dependency, and lifecycle decisions to be made explicit rather than inherited. All supported cluster lifecycle actions are mediated through a single entrypoint script; direct ad-hoc manipulation of infrastructure outside the documented workflow is intentionally unsupported.
 
 **Repository:**  
-- **[`kubernetes-cluster-automated`](https://github.com/dgeoghegan/kubernetes-cluster-automated)**
+- **[`kubernetes-cluster-automated`](https://github.com/dgeoghegan/kubernetes-cluster-automated/blob/master/REVIEWER_WALKTHROUGH.md)**
 
 ### What “high availability” means here
 
