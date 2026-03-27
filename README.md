@@ -1,24 +1,10 @@
 # Portfolio Overview — Denis Geoghegan
 
-This page is a guide to a small set of public technical demos. It is not a résumé, a tutorial, or a platform pitch.
+This page is a guide to two constrained infrastructure demos, each designed so its core claims can be verified through read-only inspection in a few minutes.
 
-These demos are deliberately constrained systems built to surface how infrastructure and delivery problems are decomposed, modeled, and verified under operational constraints. They are **intended to be evaluated through a senior engineering judgment lens**, focusing on tradeoffs, constraints, and falsifiability rather than feature completeness.
-
-These are independent, self-directed demos designed as reviewer-facing artifacts. If this page does its job, you should be able to decide quickly whether you would trust me to reason about infrastructure and delivery systems in production.
+If you only have **five minutes**, start with the **GitOps release management demo** below.
 
 These demos are reproducible from scratch and were last verified working in **February 2026**. They are not permanently running services.
-
----
-
-## How to Read This Portfolio
-
-This page is an orientation layer. You do not need to read everything.
-
-If you only have **five minutes**, start with the **GitOps release management demo** below. It is designed to make its core claim falsifiable quickly, using concrete artifacts intended for read-only inspection.
-
-If you are more interested in Kubernetes internals and infrastructure modeling, read the **control-plane demo** second. It focuses on how a cluster is constructed and rebuilt from explicit configuration.
-
-Both demos are designed so that their core claims *can be evaluated through read-only inspection*. Execution is optional and documented separately for reviewers who want to observe live behavior.
 
 ---
 
