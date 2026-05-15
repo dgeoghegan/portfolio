@@ -10,7 +10,7 @@ These projects are presented to illustrate how I approach systems design and imp
 
 A full Kubernetes cluster bootstrap inspired by a popular tutorial but restructured using Infrastructure as Code. All cluster identity, networking, and topology are computed from minimal inputs rather than fixed tutorial assumptions, enabling configurable high availability across multiple nodes and availability zones. Execution is containerized with minimal workstation dependencies.
 
-→ [Project Details](https://github.com/dgeoghegan/kubernetes-cluster-automated/blob/master/REVIEWER_WALKTHROUGH.md?utm_source=chatgpt.com)
+→ [Project Details](https://github.com/dgeoghegan/kubernetes-cluster-automated/blob/master/REVIEWER_WALKTHROUGH.md)
 
 ---
 
